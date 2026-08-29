@@ -1,0 +1,46 @@
+class Employee {
+    int id;
+    double salary;
+
+    // Constructor
+    public Employee(int id, double salary) {
+        this.id = id;
+        this.salary = salary;
+    }
+
+    // Name clash resolved using this.salary
+    void raiseSalary(double salary) {
+        this.salary = this.salary + salary;
+    }
+
+    void display() {
+        System.out.println(
+            "E-" + String.format("%03d", id) +
+            " | Final Salary: Rs " + salary
+        );
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Employee[] employees = {
+            new Employee(101, 40000),
+            new Employee(102, 55000),
+            new Employee(103, 62000),
+            new Employee(104, 48000)
+        };
+
+        double bonus = 5000;
+
+        // Single pass through the array
+        for (Employee employee : employees) {
+            employee.raiseSalary(bonus);
+        }
+
+        // Print final salaries
+        for (Employee employee : employees) {
+            employee.display();
+        }
+    }
+}
