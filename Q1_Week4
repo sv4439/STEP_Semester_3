@@ -1,46 +1,37 @@
-class Employee {
-    int id;
-    double salary;
+class LibraryBook {
+    String title;
+    String isbn;
+ public LibraryBook(String title, String isbn) {
+        this.title = title;
+        this.isbn = isbn;
 
-    // Constructor
-    public Employee(int id, double salary) {
-        this.id = id;
-        this.salary = salary;
+        // If ISBN is blank, set it to PENDING
+        if (this.isbn == null || this.isbn.isEmpty()) {
+            this.isbn = "PENDING";
+        }
     }
-
-    // Name clash resolved using this.salary
-    void raiseSalary(double salary) {
-        this.salary = this.salary + salary;
+    public LibraryBook(String title) {
+        this(title, "PENDING");
     }
 
     void display() {
-        System.out.println(
-            "E-" + String.format("%03d", id) +
-            " | Final Salary: Rs " + salary
-        );
+        System.out.println(title + " | " + isbn + " | Catalogued: true");
     }
 }
 
 public class Main {
     public static void main(String[] args) {
 
-        Employee[] employees = {
-            new Employee(101, 40000),
-            new Employee(102, 55000),
-            new Employee(103, 62000),
-            new Employee(104, 48000)
+        LibraryBook[] books = {
+            new LibraryBook("Clean Code", "978-0132350884"),
+            new LibraryBook("Untitled Draft"),
+            new LibraryBook("1984", "9780451524935"),
+            new LibraryBook("Notes")
         };
 
-        double bonus = 5000;
-
-        // Single pass through the array
-        for (Employee employee : employees) {
-            employee.raiseSalary(bonus);
-        }
-
-        // Print final salaries
-        for (Employee employee : employees) {
-            employee.display();
+        
+        for (LibraryBook book : books) {
+            book.display();
         }
     }
 }
