@@ -1,0 +1,42 @@
+class Student {
+
+    static String collegeName;
+    static int academicYear;
+
+    String name;
+
+    // Static block executes only once
+    static {
+        collegeName = "SRM Institute of Science and Technology";
+        academicYear = 2026;
+
+        System.out.println("College info loaded");
+    }
+
+    Student(String name) {
+        this.name = name;
+    }
+
+    void display() {
+        System.out.println("Student record created: " + name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        String[] names = {
+            "Ravi",
+            "Meera",
+            "Karthik",
+            "Divya",
+            "Anitha"
+        };
+
+        // Creating multiple students
+        for (String name : names) {
+            Student student = new Student(name);
+            student.display();
+        }
+    }
+}
