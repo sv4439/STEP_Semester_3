@@ -1,4 +1,4 @@
-package AssignmentProblems;
+package AssignmentProblems1;
 
 class BookInventory {
     String title;
